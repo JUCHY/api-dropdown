@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'development' && window.self === window.top) {
 } else {
   init((sdk: BaseExtensionSDK) => {
     const root = document.getElementById('root');
-
+    console.log(sdk)
     // All possible locations for your app
     // Feel free to remove unused locations
     // Dont forget to delete the file too :)

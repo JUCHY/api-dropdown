@@ -60,6 +60,7 @@ export default class Config extends Component<ConfigProps, ConfigState> {
         <Form>
           <Heading>App Config</Heading>
           <Paragraph>Welcome to your contentful app. This is your config page.</Paragraph>
+          <Paragraph>Type in API link here:</Paragraph>
         </Form>
       </Workbench>
     );
