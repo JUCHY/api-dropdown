@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { Paragraph, Form } from '@contentful/forma-36-react-components';
+import React from 'react';
 import { FieldExtensionSDK } from 'contentful-ui-extensions-sdk';
-import Select from 'react-select';
-import AsyncSelect, { makeAsyncSelect } from 'react-select/async';
+import AsyncSelect from 'react-select/async';
 
 type OptionType = {
   value: string;
@@ -157,95 +155,13 @@ class Field extends React.Component<MyProps,MyState>{
     )
   }
 }
-/* 
-const Field = (props: FieldProps) => {
-  // If you only want to extend Contentful's default editing experience
-  // reuse Contentful's editor components
-  // -> https://www.contentful.com/developers/docs/extensibility/field-editors/
-  const [textvalue, setValue] = useState("")
-  const [items, setItems] = useState(options)
-  const [launches, setlaunches] = useState([])
 
-  handleChange(()=>{
-
-    const lowernum = parseInt(textvalue)-1
-    const biggernum = parseInt(textvalue)*10
-    if(isNaN(lowernum)){
-      return
-    }
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Cookie", "__cfduid=d2f5fec261c8886084279ed0e67dfd73f1608085699");
-
-    var raw = JSON.stringify({"query":{"flight_number":{"$gt":lowernum,"$lt":biggernum}},"options":{"limit":5}});
-
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw
-    };
-
-    fetch("https://api.spacexdata.com/v4/launches/query", requestOptions)
-      .then(res => res.json())
-      .then(items => items.docs)
-      .then(
-        (docs) => {
-          console.log(docs)
-          setItems(docs.map((doc: any)=>{
-            return { value: doc.flight_number, label: doc.flight_number}
-          }))
-          setlaunches(docs)
-        },
-        (error) => {
-          console.log(error)
-        }
-      );
-    
-  })
-
-  return <Select value={{value : textvalue, label: textvalue}} onChange = {(e:any) => {setValue(e.value); handleChange()}} options={items}></Select>;
-} */
-
-
-/* const componentDidMount = ()=> {
-  this.props.sdk.window.startAutoResizer();
-
-  // Handler for external field value changes (e.g. when multiple authors are working on the same entry).
-  this.detachExternalChangeHandler = this.props.sdk.field.onValueChanged(
-    this.onExternalChange
-  );
-  //ask them about finding based off num
-
-}
-
-const componentWillUnmount() {
-  if (this.detachExternalChangeHandler) {
-    this.detachExternalChangeHandler();
-  }
-}
-
-const onExternalChange = value => {
-  this.setState({ value });
-};
-
-const onChange = e => {
-  const value = e.currentTarget.value;
-  this.setState({ value });
-  if (value) {
-    this.props.sdk.field.setValue(value);
-  } else {
-    this.props.sdk.field.removeValue();
-  }
-}; */
-
-
-
-const handleNumberOnlyInput = (e: React.KeyboardEvent) => {
+//Removed as not neccessary to keep flight_number values solely a number
+/* const handleNumberOnlyInput = (e: React.KeyboardEvent) => {
   console.log(e.nativeEvent.code)
   if (e.nativeEvent.code === "KeyE" || e.nativeEvent.code === "Minus") {
     e.preventDefault();
   }
 };
-
+ */
 export default Field;
